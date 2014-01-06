@@ -7,6 +7,11 @@ gem 'rails', '3.2.14'
 
 gem 'sqlite3'
 
+gem "newrelic_rpm"
+gem 'settingslogic'
+gem 'rails_12factor'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,6 +23,18 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-stack_explorer'
+  gem 'guard'
+  gem 'guard-livereload', require: false
+  gem "rack-livereload"
+  gem 'rb-fsevent'
 end
 
 gem 'jquery-rails'
