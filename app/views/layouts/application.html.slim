@@ -7,16 +7,45 @@ html
     meta content="initial-scale=1.0, user-scalable=no" name="viewport"
     script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC61oIuAhZh9zfGEEXdjvxF1DBXTxvFb6A&sensor=false" type="text/javascript"
     script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.4"
+
     javascript:
+
+      // Find the right method, call on correct element
+      function launchFullScreen(element) {
+        if(element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if(element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if(element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if(element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      }
+
+      // Launch fullscreen for browsers that support it!
+      launchFullScreen(document.documentElement); // the whole page
+
+      /* array of different styles */
       var styles = [
       /* retro */
       [{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.local","stylers":[{"visibility":"on"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"on"}]},{"featureType":"water","stylers":[{"color":"#84afa3"},{"lightness":52}]},{"stylers":[{"saturation":-17},{"gamma":0.36}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#3f518c"}]}]
+      /* style 2 goes here */
+
+      /* style 3 goes here */
+
       ]
+
       var style = document.getElementById()
+
+      /* layer specifies the type of stamen map */
       var layer = "watercolor";
+
       function initialize() {
+
+        /* the hash takes the map options */
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
+          center: new google.maps.LatLng(51.5112139, -0.1198244),
           zoom: 8,
           mapTypeId: layer,
           disableDefaultUI: true,
@@ -25,14 +54,27 @@ html
               mapTypeIds: [layer]
           }
         };
+
+        /* the line below sets the map and gives it the options above */
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+        /* the line below sets the stamen layer */
         map.mapTypes.set(layer, new google.maps.StamenMapType(layer));
+
       }
+
       google.maps.event.addDomListener(window, 'load', initialize);
 
   body class=controller_name
     #map-canvas
+      #yoda yoda
+      | yoda
     = yield
 
     = javascript_include_tag 'application'
+
+
+
+
+
